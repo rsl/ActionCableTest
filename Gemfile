@@ -20,6 +20,7 @@ gem 'responders'
 gem 'draper'
 gem 'kaminari'
 gem 'jquery-rails'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

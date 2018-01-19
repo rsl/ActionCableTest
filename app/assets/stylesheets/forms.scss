@@ -1,0 +1,11 @@
+form {
+  div.form_group {
+    width: 50%;
+    margin-bottom: 1rem;
+
+    input[type=text], textarea {
+      width: 60%;
+      border: 1px solid #ccc;
+    }
+  }
+}

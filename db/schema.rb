@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119155920) do
+ActiveRecord::Schema.define(version: 20180119192215) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
     t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "list_id"
+    t.index ["list_id"], name: "index_items_on_list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active", default: true
+    t.integer "items_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

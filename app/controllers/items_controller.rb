@@ -1,20 +1,21 @@
 class ItemsController < ApplicationController
   respond_to :html
 
+  before_action :find_list
   before_action :find_item, only: [:edit, :update, :destroy]
 
   def index
     # Draper docs suggest NOT decorating in the controller like this
-    @items = Item.order(:created_at).decorate
+    @items = @list.items.order(:created_at).decorate
   end
 
   def new
-    @item = Item.new
+    @item = @list.items.new
   end
 
   def create
-    @item = Item.create(item_params)
-    respond_with @item
+    @item = @list.items.create(item_params)
+    respond_with @list, @item
   end
 
   def edit
@@ -23,21 +24,25 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
-    respond_with @item
+    respond_with @list, @item
   end
 
   def destroy
     @item.destroy
-    respond_with @item
+    respond_with @list, @item
   end
 
 private
 
   def item_params
-    params.require(:item).permit(:name, :description, :status, :active)
+    params.require(:item).permit(:name, :description, :active)
+  end
+
+  def find_list
+    @list = List.find(params[:list_id])
   end
 
   def find_item
-    @item = Item.find(params[:id])
+    @item = @list.items.find(params[:id])
   end
 end

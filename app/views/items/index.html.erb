@@ -1,7 +1,13 @@
-<h1>Items</h1>
+<h1>
+  <%= @list.name %> > Items
+  <%= link_to 'All Lists', lists_path %>
+</h1>
 
-<table class="items">
+<%= content_tag :table, class: 'items', data: {
+  list_id: @list.id,
+  redirect_to: lists_url
+} do %>
   <%= render @items %>
-</table>
+<% end %>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to '+ New Item', new_list_item_path(@list), class: 'new_item' %>
