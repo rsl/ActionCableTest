@@ -1,0 +1,26 @@
+* {
+  font-family: helvetica;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  &.check_box {
+    display: inline;
+  }
+}
+
+a {
+  color: #a56a0b;
+  text-decoration: none;
+  border-bottom: 1px dotted lighten(#a56a0b, 15%);
+  &:hover {
+    border-bottom: 1px solid #a56a0b;
+  }
+}

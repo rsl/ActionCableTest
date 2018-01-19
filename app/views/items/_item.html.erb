@@ -1,0 +1,5 @@
+<%= content_tag :tr, id: dom_id(item), class: item.row_style do %>
+  <td class="name"><%= link_to item.name, edit_item_path(item) %></td>
+  <td class="description"><%= item.description %></td>
+  <td class="destroy"><%= link_to 'Remove', item_path(item), method: :delete %></td>
+<% end %>

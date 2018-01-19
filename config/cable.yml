@@ -1,0 +1,10 @@
+redis: &redis
+  adapter: redis
+  url: redis://localhost:6379/1
+
+development: *redis
+  # channel_prefix: action_cable_test_development
+test: *redis
+  # channel_prefix: action_cable_test_test
+production: *redis
+  # channel_prefix: action_cable_test_production
